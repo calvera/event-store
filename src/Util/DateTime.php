@@ -27,6 +27,7 @@ class DateTime
     /** @psalm-pure */
     public static function create(string $dateTimeString): DateTimeImmutable
     {
+        $dateTimeString = preg_replace('/(\.\d{6})\d*/','$1', $dateTimeString);
         $dateTime = DateTimeImmutable::createFromFormat(
             'Y-m-d\TH:i:s.uP',
             $dateTimeString,
